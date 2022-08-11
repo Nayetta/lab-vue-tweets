@@ -1,14 +1,13 @@
 <template>
   <div class="app">
-    <!-- <Tweet tweet="tweets" {{user.name}} /> -->
+    <!-- <Tweet tweet="tweets" /> -->
     <Tweet
       v-for="(tweet, index) in tweets"
-      key="index"
-      :name="tweets[index].user.name"
-      :handle="tweets[index].user.handle"
-      :timestamp="tweets[index].timestamp"
-      :message="tweets[index].message"
-      :image="tweets[index].user.image"
+      :key="index"
+      :image="tweet.user.image"
+      :user="tweet.user"
+      :timestamp="tweet.timestamp"
+      :message="tweet.message"
     />
   </div>
 </template>
@@ -122,6 +121,7 @@ body {
   display: flex;
   font-size: 1.1rem;
   line-height: 18px;
+  margin-bottom: 10px;
 }
 
 .body {

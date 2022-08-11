@@ -1,49 +1,43 @@
 <template>
   <div className="tweet">
-    <img
-      src="https://i.imgur.com/9yw1Fyw.jpg"
-      className="profile"
-      alt="profile"
-    />
-
+    <ImageComp :image="image" />
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">{{ name }}</span>
-          <span className="handle">{{ handle }}</span>
-        </span>
-
-        <span className="timestamp">{{ timestamp }}</span>
+        <UserComp :user="user" />
+        <!-- <span className="user">
+          <span className="name">Name</span>
+          <span className="handle">handle</span>
+        </span> -->
+        <TimeStamp :timestamp="timestamp" />
       </div>
-
-      <p className="message">{{ message }}</p>
-
-      <div className="actions">
-        <!-- Font Awesome icons -->
-        <i class="far fa-comment"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-share"></i>
-      </div>
+      <MessageComp :message="message" />
+      <ActionsComp />
     </div>
 
     <i class="fas fa-ellipsis-h"></i>
   </div>
 </template>
 <script>
+import MessageComp from "./MessageComp.vue";
+import UserComp from "./UserComp.vue";
+import TimeStamp from "./TimeStamp.vue";
+import ImageComp from "./ImageComp.vue";
+import ActionsComp from "./ActionsComp.vue";
 export default {
+  components: { TimeStamp, UserComp, MessageComp, ImageComp, ActionsComp },
   name: "Tweet",
-  props: ["name", "handle", "timestamp", "message", "image"],
+
+  props: {
+    user: Object,
+    timestamp: String,
+    message: String,
+    image: String,
+  },
+
   data() {
-    return {
-      imagen: "image",
-    };
+    return {};
   },
-  methods: {
-    imagen() {
-      return this.imagen;
-    },
-  },
+  methods: {},
   computed: {},
   watch: {},
 };
